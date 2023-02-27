@@ -183,9 +183,9 @@ integrator_settings = propagation_setup.integrator.runge_kutta_4(
     fixed_step_size
 )
 
-# Create propagation settings.
+# Create translational propagation settings.
 termination_settings = propagation_setup.propagator.time_termination( simulation_end_epoch )
-propagator_settings = propagation_setup.propagator.translational(
+translational_propagator_settings = propagation_setup.propagator.translational(
     central_bodies,
     acceleration_models,
     bodies_to_propagate,
@@ -196,7 +196,12 @@ propagator_settings = propagation_setup.propagator.translational(
     output_variables = dependent_variables_to_save
 )
 
-propagator_settings.print_settings.print_initial_and_final_conditions = True
+# Create mass propagator settings
+XXXX
+
+# Create combined mass and translational dynamics propagator settings
+XXXX
+propagator_settings = ...
 
 
 ###########################################################################
