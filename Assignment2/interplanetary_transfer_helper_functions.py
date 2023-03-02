@@ -236,10 +236,11 @@ def propagate_trajectory(
     # Get propagator settings for perturbed/unperturbed forwards/backwards arcs
     if use_perturbations:
         propagator_settings = get_perturbed_propagator_settings(
-            bodies, lambert_arc_initial_state, final_time,use_rsw_acceleration,rsw_acceleration_magnitude)
+            bodies, lambert_arc_initial_state, initial_time, final_time,use_rsw_acceleration,rsw_acceleration_magnitude)
+
     else:
         propagator_settings = get_unperturbed_propagator_settings(
-            bodies, lambert_arc_initial_state, final_time)
+            bodies, lambert_arc_initial_state, initial_time, final_time)
 
     # Propagate dynamics with required settings
     dynamics_simulator = numerical_simulation.create_dynamics_simulator(bodies, propagator_settings)
@@ -290,7 +291,6 @@ def propagate_variational_equations(
         lambert_arc_initial_state,
         initial_time,
         final_time,
-        fixed_step_size,
         use_rsw_acceleration,
         rsw_acceleration_magnitude)
 
@@ -341,7 +341,8 @@ def get_sensitivity_parameter_set(
 def get_unperturbed_propagator_settings(
         bodies: environment.SystemOfBodies,
         initial_state: np.array,
-        termination_time: float ) -> propagation_setup.propagator.SingleArcPropagatorSettings:
+        initial_time: float,
+        final_time: float ) -> propagation_setup.propagator.SingleArcPropagatorSettings:
     """
     Creates the propagator settings for an unperturbed trajectory.
 
@@ -351,8 +352,9 @@ def get_unperturbed_propagator_settings(
 
     initial_state : Cartesian initial state of the vehicle in the simulation
 
-    termination_time : Epoch since J2000 at which the propagation will be terminated
+    initial_time : Epoch since J2000 at which the propagation starts
 
+    final_time : Epoch since J2000 at which the propagation will be terminated
 
     Return
     ------
@@ -411,10 +413,6 @@ def get_perturbed_propagator_settings(
         signed_fixed_step_size = -fixed_step_size
     else:
         signed_fixed_step_size = fixed_step_size
-
-    # Get integrator settings
-    integrator_settings = propagation_setup.integrator.runge_kutta_4(
-        initial_time, signed_fixed_step_size)
 
     # Create propagation settings.
     propagator_settings = XXXX
