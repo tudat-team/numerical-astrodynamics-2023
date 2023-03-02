@@ -36,30 +36,39 @@ from tudatpy.kernel.astro import element_conversion
 class ThrustGuidance:
 
     def __init__(self,
-                 maximum_thrust: float,
-                 true_anomaly_threshold: float,
+                 maximum_thrust: float, # Maximum thrust value that is to be used
+                 true_anomaly_threshold: float, # Limiting value of true anomaly before and after node at which thrust should be on/off
                  bodies: environment.SystemOfBodies):
         self.maximum_thrust = maximum_thrust
         self.true_anomaly_threshold = true_anomaly_threshold
         self.bodies = bodies
 
     def compute_thrust_direction(self, current_time: float):
-        # Check if computation is to be done
+
+        # Check if computation is to be done. NOTE TO STUDENTS: ALL CALCULATION OF THRUST DIRECTION MUST BE INSIDE
+        # THE FOLLOWING BLOCK
         if( current_time == current_time ):
 
             # Retrieve current JUICE Cartesian state w.r.t. Ganymede from environment
-            current_cartesian_state = self.bodies.get_body('JUICE').state - self.bodies.get_body('Ganymede').state
+            current_cartesian_state = self.bodies.get_body( 'JUICE' ).state - self.bodies.get_body( 'Ganymede' ).state
+            gravitational_parameter = self.bodies.get_body( 'Ganymede' ).gravitational_parameter
+            current_keplerian_state = element_conversion.cartesian_to_keplerian( current_cartesian_state, gravitational_parameter )
 
             # Compute and return current thrust direction (3x1 vector)
             thrust_direction = XXXX
             XXXX
+
+            # Here, the direction of the thrust (in a frame with inertial orientation; same as current_cartesian_state)
+            # should be returned as a numpy unit vector (3x1)
             return XXXX
 
         # If no computation is to be done, return zeros
         else
             return np.zeros([3,1])
     def compute_thrust_magnitude(self, current_time: float):
-        # Check if computation is to be done
+
+        # Check if computation is to be done. NOTE TO STUDENTS: ALL CALCULATION OF THRUST MAGNITUDE MUST BE INSIDE
+        # THE FOLLOWING BLOCK
         if( current_time == current_time ):
 
             # Retrieve current JUICE Cartesian  and Keplerian state w.r.t. Ganymede from environment
@@ -70,6 +79,8 @@ class ThrustGuidance:
             # Compute and return current thrust magnitude (scalar)
             thrust_magnitude = XXXX
             XXXX
+
+            # Here, the value of the thrust magnitude (in Newtons, as a single floating point variable), should be returned
             return XXXX
         # If no computation is to be done, return zeros
         else:
