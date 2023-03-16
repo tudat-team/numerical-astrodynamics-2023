@@ -30,7 +30,7 @@ lambert_arc_ephemeris = get_lambert_problem_result(bodies, target_body, departur
 """
 case_i: The initial and final propagation time equal to the initial and final times of the Lambert arc.
 case_ii: The initial and final propagation time shifted forward and backward in time, respectively, by ∆t=1 hour.
-case_iii: The initial and final propagation time shifted forward and backward in time, respectively, by ∆t=2 days.
+case_iii: The initial and final propagation time shifted forward and backward in time, respectively, by ∆t such that we start/end on the sphere of influence
 
 """
 # List cases to iterate over. STUDENT NOTE: feel free to modify if you see fit
