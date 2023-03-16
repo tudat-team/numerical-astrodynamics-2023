@@ -184,8 +184,8 @@ def get_lambert_arc_history(
     """
 
     lambert_arc_states = dict()
-    for state in simulation_result:
-        lambert_arc_states[state] = lambert_arc_ephemeris.cartesian_state(state)
+    for time in simulation_result:
+        lambert_arc_states[time] = lambert_arc_ephemeris.cartesian_state(time)
 
     return lambert_arc_states
 
