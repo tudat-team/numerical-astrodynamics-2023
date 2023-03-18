@@ -332,7 +332,7 @@ def get_sensitivity_parameter_set(
     if use_rsw_acceleration == True:
         parameter_settings.append(estimation_setup.parameter.constant_empirical_acceleration_terms("Spacecraft", "Sun"))
 
-    return estimation_setup.create_parameters_to_estimate(parameter_settings, bodies, propagator_settings)
+    return estimation_setup.create_parameter_set(parameter_settings, bodies, propagator_settings)
 
 
 ################ HELPER FUNCTIONS: MODIFY ########################################
