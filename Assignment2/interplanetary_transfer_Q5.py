@@ -47,7 +47,7 @@ for arc_index in range(number_of_arcs)
     ###########################################################################
 
     sensitivity_parameters = get_sensitivity_parameter_set(
-        propagator_settings, bodies, target_body)
+        propagator_settings, bodies )
     variational_equations_simulator = numerical_simulation.create_variational_equations_solver(
         bodies, propagator_settings, sensitivity_parameters)
 
@@ -78,7 +78,7 @@ for arc_index in range(number_of_arcs)
 
             # Reset propagator settings with perturbed initial state
             perturbed_initial_state = XXXX
-            propagator_settings.reset_initial_states(perturbed_initial_state)
+            propagator_settings.initial_states = perturbed_initial_state
 
             XXXX
 
