@@ -22,9 +22,15 @@ http://tudat.tudelft.nl/LICENSE.
 #  Note that for question 4, you should (can) use both the perturbed and unperturbed dynamics, which are automatically
 #  performed if you finish the script and set run_question_4 to True
 
+import os
+from tudatpy.kernel.interface import spice
 from integrator_analysis_helper_functions import *
 
+current_directory = os.getcwd( )
+
 spice_interface.load_standard_kernels()
+spice.load_kernel( current_directory + "/juice_mat_crema_5_1_150lb_v01.bsp" );
+
 bodies = create_bodies( )
 
 run_question_4 = False

@@ -13,7 +13,6 @@ import os
 from tudatpy.kernel.interface import spice
 from integrator_analysis_helper_functions import *
 
-# Retrieve current directory
 current_directory = os.getcwd( )
 
 # Load spice kernels.

@@ -9,9 +9,15 @@ a copy of the license with this file. If not, please or visit:
 http://tudat.tudelft.nl/LICENSE.
 '''
 
+import os
+from tudatpy.kernel.interface import spice
 from integrator_analysis_helper_functions import *
 
+current_directory = os.getcwd( )
+
 spice_interface.load_standard_kernels()
+spice.load_kernel( current_directory + "/juice_mat_crema_5_1_150lb_v01.bsp" );
+
 bodies = create_bodies( )
 
 # Define settings for orbit only, unperturbed only
