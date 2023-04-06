@@ -86,7 +86,7 @@ for run_flyby_from_closest_approach in range(number_of_iterations):
 
         # Create interpolator for benchmark results
         interpolator_settings = interpolators.lagrange_interpolation( 8 )
-        benchmark_interpolator = interpolators.create_one_dimensional_interpolator(
+        benchmark_interpolator = interpolators.create_one_dimensional_vector_interpolator(
             benchmark_dynamics_simulator.state_history, interpolator_settings )
         
         # Perform integration of dynamics with different tolerances
