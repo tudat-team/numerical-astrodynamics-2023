@@ -46,6 +46,9 @@ for i in range(20):
     RKF
     '''
 
+    # Get fixed step RKF78 integrator settings
+    integrator_settings = ...
+    
     # Define propagator settings, terminate after 300 s.
     time_step = 300.0
     termination_time = current_start_time + time_step    
@@ -57,9 +60,6 @@ for i in range(20):
             bodies_to_integrate,
             initial_state,
             termination_settings )
-    
-    # Get fixed step RKF78 integrator settings
-    integrator_settings = ...
     
     # Propagate Dynamics
     dynamics_simulator = ...

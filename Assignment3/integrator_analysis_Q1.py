@@ -47,14 +47,14 @@ for current_phase in range( len(central_bodies_per_phase )):
     # Retrieve acceleration settings without perturbations
     acceleration_models = get_unperturbed_accelerations( current_central_body, bodies)
 
-    # Define propagator settings
-    propagator_settings = ...
-    
     # Iterate over step size
     for step_size in step_sizes:
         
         # Define integrator settings
         integrator_settings = get_fixed_step_size_integrator_settings(current_phase_start_time, step_size)
+
+        # Define propagator settings
+        propagator_settings = ...
 
         # Propagate dynamics
         dynamics_simulator = ...
